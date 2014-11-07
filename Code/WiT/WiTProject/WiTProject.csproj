@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
-    <Compile Include="MyScene.cs" />
+    <Compile Include="Scenes\TestScene.cs" />
     <Compile Include="Behavior\PlayerBehavior.cs" />
     <Compile Include="Core\Spawner.cs" />
     <Compile Include="Scenes\MainMenuCreditsScene.cs" />
