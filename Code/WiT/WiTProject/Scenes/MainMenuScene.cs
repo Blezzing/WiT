@@ -111,7 +111,7 @@ namespace WiTProject
 
         void newGameBut_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            WaveServices.ScreenContextManager.To(new ScreenContext(new TestScene()));
         }
 
         void loadGameBut_Click(object sender, EventArgs e)
@@ -121,7 +121,6 @@ namespace WiTProject
 
         void creditsBut_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("debuglolz");
             WaveServices.ScreenContextManager.To(new ScreenContext(new MainMenuCreditsScene()));
         }
 

@@ -31,7 +31,7 @@ namespace WiTProject
         public Spawner(Scene scene)
         {
             _scene = scene;
-            _spriteDictionary.Add("PlayerSprite", "Content/Sprites/blablabla"); //FIX
+            _spriteDictionary.Add("PlayerSprite", "Content/Assets/Sprites/spinner.png"); //FIX
         }
 
         public void Player(float posX, float posY)

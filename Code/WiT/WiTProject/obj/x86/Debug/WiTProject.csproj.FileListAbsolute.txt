@@ -18,3 +18,23 @@ C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Debug\FarseerPh
 C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\obj\x86\Debug\WiTProject.csprojResolveAssemblyReference.cache
 C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\obj\x86\Debug\WiTProject.dll
 C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\obj\x86\Debug\WiTProject.pdb
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WiTProject.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WiTProject.pdb
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Common.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Components.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Framework.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Materials.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Physics.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\Zlib.Portable.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\Bepu.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\FarseerPhysics.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Common.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Framework.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Components.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Materials.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\WaveEngine.Physics.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\Bepu.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Debug\FarseerPhysics.xml
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Debug\WiTProject.csprojResolveAssemblyReference.cache
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Debug\WiTProject.dll
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Debug\WiTProject.pdb
