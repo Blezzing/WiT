@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiT", "WiT\WiT\WiT.csproj", "{C3A2E831-0A38-44A4-8BEF-1A53735BC9D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiTProject", "WiT\WiTProject\WiTProject.csproj", "{660A81CB-D69D-4FA8-9F04-B33E8195EFE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3A2E831-0A38-44A4-8BEF-1A53735BC9D2}.Debug|x86.ActiveCfg = Debug|x86
+		{C3A2E831-0A38-44A4-8BEF-1A53735BC9D2}.Debug|x86.Build.0 = Debug|x86
+		{C3A2E831-0A38-44A4-8BEF-1A53735BC9D2}.Release|x86.ActiveCfg = Release|x86
+		{C3A2E831-0A38-44A4-8BEF-1A53735BC9D2}.Release|x86.Build.0 = Release|x86
+		{660A81CB-D69D-4FA8-9F04-B33E8195EFE3}.Debug|x86.ActiveCfg = Debug|x86
+		{660A81CB-D69D-4FA8-9F04-B33E8195EFE3}.Debug|x86.Build.0 = Debug|x86
+		{660A81CB-D69D-4FA8-9F04-B33E8195EFE3}.Release|x86.ActiveCfg = Release|x86
+		{660A81CB-D69D-4FA8-9F04-B33E8195EFE3}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
