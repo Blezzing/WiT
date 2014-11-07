@@ -50,3 +50,13 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.exe
+*.exe
+*.exe
+*.exe
+*.pdb
+Code/WiT/WiT/bin/x86/Debug/WiTProject.dll
+*.cache
+*.txt
+*.dll
