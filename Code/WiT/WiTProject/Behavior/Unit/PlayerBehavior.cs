@@ -17,7 +17,9 @@ using WaveEngine.Framework.Services;
 
 namespace WiTProject
 {
-    public class PlayerBehavior : Behavior
+    public class PlayerBehavior 
+        : Behavior,
+        ICanDie
     {
         //config vars
         private float _moveForce;
@@ -95,6 +97,17 @@ namespace WiTProject
             dif.Normalize();
 
             _body.Rotation = (float) (Math.Atan2(dif.Y,dif.X));
+        }
+
+        public void CheckForDeath()
+        {
+            if (false)
+                Die();
+        }
+
+        public void Die()
+        {
+            Console.WriteLine("i'm fucking dead.");
         }
     }
 }
