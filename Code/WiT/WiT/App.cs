@@ -24,7 +24,7 @@ namespace WiT
             this.Width = 1280;
             this.Height = 720;
             this.FullScreen = false;
-            this.WindowTitle = "WiT";
+            this.WindowTitle = "W.i.T. - Wizards in Trouble";
         }
 
         public override void Initialize()
