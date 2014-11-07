@@ -48,9 +48,14 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="MyScene.cs" />
+    <Compile Include="Scenes\MainMenuCreditsScene.cs" />
+    <Compile Include="Scenes\MainMenuScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources.weproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Behaviors\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(WaveEngine)v1.0\Targets\Windows\WPKAssetsExport.targets" />
