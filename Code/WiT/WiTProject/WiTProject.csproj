@@ -46,9 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behavior\Unit\EnemyBehavior.cs" />
+    <Compile Include="Core\FightJudge.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Interfaces\ICanTakeResidualDamage.cs" />
+    <Compile Include="Interfaces\ICanDie.cs" />
+    <Compile Include="Core\PlayerStats.cs" />
     <Compile Include="Scenes\TestScene.cs" />
-    <Compile Include="Behavior\PlayerBehavior.cs" />
+    <Compile Include="Behavior\Unit\PlayerBehavior.cs" />
     <Compile Include="Core\Spawner.cs" />
     <Compile Include="Scenes\MainMenuCreditsScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />

@@ -29,6 +29,7 @@ namespace WiTProject
 
         //quality of life
         private RigidBody2D _body;
+        private Transform2D _transform;
 
         //constructor
         public PlayerBehavior(float moveForce)
@@ -40,6 +41,7 @@ namespace WiTProject
         protected override void Initialize()
         {
             _body = Owner.FindComponent<RigidBody2D>();
+            _transform = Owner.FindComponent<Transform2D>();
         }
 
         //update overrice
@@ -47,6 +49,7 @@ namespace WiTProject
         {
             UpdateInput();
             Movement();
+            RotateTowardsMouse();
         }
 
         private void UpdateInput()
@@ -82,6 +85,16 @@ namespace WiTProject
             }
             else
                 throw new NullReferenceException("Baka! input blev ikke updated før movement() blev kaldt");
+        }
+
+        private void RotateTowardsMouse()
+        {
+            Vector2 playerPos = _transform.Position;
+            Vector2 mousePos = new Vector2(_currMS.X,_currMS.Y);
+            Vector2 dif = mousePos-playerPos;
+            dif.Normalize();
+
+            _body.Rotation = (float) (Math.Atan2(dif.Y,dif.X));
         }
     }
 }

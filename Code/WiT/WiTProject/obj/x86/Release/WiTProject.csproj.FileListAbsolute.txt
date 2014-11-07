@@ -17,3 +17,23 @@ C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Release
 C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Release\FarseerPhysics.xml
 C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.dll
 C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.pdb
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WiTProject.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WiTProject.pdb
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Common.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Components.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Framework.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Materials.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Physics.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\Zlib.Portable.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\Bepu.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\FarseerPhysics.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Common.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Framework.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Components.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Materials.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\WaveEngine.Physics.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\Bepu.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\bin\x86\Release\FarseerPhysics.xml
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.dll
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.pdb
+C:\Users\Morten\Documents\GitHub\WaT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.csprojResolveAssemblyReference.cache

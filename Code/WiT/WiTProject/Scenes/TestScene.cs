@@ -17,27 +17,22 @@ namespace WiTProject
     public class TestScene : Scene
     {
         private Spawner _spawner;
+        private FightJudge _judge;
 
         protected override void CreateScene()
         {
-            //Setup spawner
-            _spawner = new Spawner(this);
+            //Setup
+            _judge = new FightJudge(this);
+            _spawner = new Spawner(this, _judge);
 
-            // Create a 2D camera
-            var camera2D = new FixedCamera2D("Camera2D") { BackgroundColor = Color.LightGreen}; // Transparent background need this clearFlags.
-            EntityManager.Add(camera2D);
-
-            //Add player
-            _spawner.Player(50, 50);
-
-
+            //Spawn stuff
+            _spawner.SpawnCamera2D();
+            _spawner.SpawnPlayer(50, 50);
         }
 
         protected override void Start()
         {
             base.Start();
-
-            // This method is called after the CreateScene and Initialize methods and before the first Update.
         }
     }
 }

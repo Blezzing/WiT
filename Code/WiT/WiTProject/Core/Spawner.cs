@@ -26,6 +26,7 @@ namespace WiTProject
 
         //vars
         private Scene _scene;
+        private FightJudge _judge;
 
         //basic setup vars
         private const float normalMass = 10f;
@@ -33,13 +34,14 @@ namespace WiTProject
         private const float normalMoveForce = 2f;
 
         //constructor
-        public Spawner(Scene scene)
+        public Spawner(Scene scene, FightJudge judge)
         {
             _scene = scene;
+            _judge = judge;
             _spriteDictionary.Add("PlayerSprite", "Content/Assets/Sprites/spinner.png"); //FIX
         }
 
-        public void Player(float posX, float posY)
+        public void SpawnPlayer(float posX, float posY)
         {
             Entity player = new Entity("Player")
                 .AddComponent(new Transform2D() { Position = new Vector2(posX, posY) })
@@ -49,6 +51,12 @@ namespace WiTProject
                 .AddComponent(new CircleCollider())
                 .AddComponent(new PlayerBehavior(normalMoveForce));
             _scene.EntityManager.Add(player);
+        }
+
+        public void SpawnCamera2D()
+        {
+            var camera2D = new FixedCamera2D("Camera2D") { BackgroundColor = Color.LightGreen};
+            _scene.EntityManager.Add(camera2D);
         }
     }
 }
