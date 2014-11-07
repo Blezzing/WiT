@@ -17,7 +17,11 @@ $RECYCLE.BIN/
 # Visual Studio Stuff
 *.exe
 *.dll
-
+*.suo
+*.txt
+*.pdb
+*.cache
+*.manifest
 
 # =========================
 # Operating System Files
