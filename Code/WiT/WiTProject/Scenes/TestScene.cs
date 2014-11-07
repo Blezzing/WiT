@@ -14,7 +14,7 @@ using WaveEngine.Framework.Services;
 
 namespace WiTProject
 {
-    public class MyScene : Scene
+    public class TestScene : Scene
     {
         private Spawner _spawner;
 
