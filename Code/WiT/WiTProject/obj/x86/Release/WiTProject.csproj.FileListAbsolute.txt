@@ -17,3 +17,4 @@ C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Release
 C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\bin\x86\Release\FarseerPhysics.xml
 C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.dll
 C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.pdb
+C:\Users\Master Splinter\GitRepositories\WiT\Code\WiT\WiTProject\obj\x86\Release\WiTProject.csprojResolveAssemblyReference.cache

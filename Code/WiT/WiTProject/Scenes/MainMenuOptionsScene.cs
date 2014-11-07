@@ -17,31 +17,18 @@ using WaveEngine.Framework.UI;
 
 namespace WiTProject
 {
-    class MainMenuCreditsScene : Scene
+    class MainMenuOptionsScene : Scene
     {
         private ScreenTransition transition = new CrossFadeTransition(new TimeSpan(0, 0, 0, 1, 200));
-        string title = "W. i. T.",
-               subTitle = "Wizards in Trouble",
-               descriptionLeft  = "Credits:\n\n"
-                                + "Idea:\n"
-                                + "Programming:\n"
-                                + "Art:\n"
-                                + "Audio:\n\n"
-                                + "Special thx:\n",
-               descriptionRight = "\n\n"
-                                + "%NAME%\n"
-                                + "%NAME%\n"
-                                + "%NAME%\n"
-                                + "%NAME%\n\n"
-                                + "%NAME%\n";
-
+        string title    = "W. i. T.",
+               subTitle = "Wizards in Trouble";
         protected override void CreateScene()
         {
-            FixedCamera2D camera2D = new FixedCamera2D("Main2DCamera");
+            FixedCamera2D camera2D = new FixedCamera2D("Camera2D");
             camera2D.BackgroundColor = Color.AliceBlue;
 
             CreateTitle();
-            CreateCredits();
+            CreateOptions();
             CreateButtons();
 
             EntityManager.Add(camera2D);
@@ -74,41 +61,40 @@ namespace WiTProject
             EntityManager.Add(subTitleBlock);
         }
 
-        private void CreateCredits()
+        private void CreateOptions()
         {
-            TextBlock credBlockLeft = new TextBlock()
+            TextBlock volumeBlock = new TextBlock("VolumeBlock")
             {
-                Text                = descriptionLeft,
-                Width               = 100,
+                Width               = 200,
+                Text                = "Master volume:",
                 Foreground          = Color.Black,
-                TextAlignment       = TextAlignment.Left,
+                TextAlignment       = TextAlignment.Right,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin              = new Thickness(-75, 250, 0, 0),
+                Margin              = new Thickness(-150, 300, 0, 0),
             };
-            TextBlock credBlockRight = new TextBlock()
+            Slider volumeSlider = new Slider("VolumeSlider")
             {
-                Text                = descriptionRight,
-                Width               = 100,
-                Foreground          = Color.Black,
-                TextAlignment       = TextAlignment.Left,
+                Width               = 200,
+                TextColor           = Color.Black,
+                Value               = 75,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin              = new Thickness(75, 250, 0, 0),
+                Margin              = new Thickness(100, 300, 0, 0),
             };
 
-            EntityManager.Add(credBlockLeft);
-            EntityManager.Add(credBlockRight);
+            EntityManager.Add(volumeBlock);
+            EntityManager.Add(volumeSlider);
         }
 
         private void CreateButtons()
         {
             Button backBut = new Button()
             {
-                Text                = "Return",
-                Width               = 250,
-                Foreground          = Color.Black,
-                BackgroundColor     = Color.Gainsboro,
+                Text = "Return",
+                Width = 250,
+                Foreground = Color.Black,
+                BackgroundColor = Color.Gainsboro,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin              = new Thickness(0, 600, 0, 0),
+                Margin = new Thickness(0, 600, 0, 0),
             };
             backBut.Click += backBut_Click;
 
