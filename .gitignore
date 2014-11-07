@@ -14,6 +14,11 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Visual Studio Stuff
+*.exe
+*.dll
+
+
 # =========================
 # Operating System Files
 # =========================
