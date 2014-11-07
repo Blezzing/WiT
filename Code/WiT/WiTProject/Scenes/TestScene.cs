@@ -24,7 +24,7 @@ namespace WiTProject
             _spawner = new Spawner(this);
 
             // Create a 2D camera
-            var camera2D = new FixedCamera2D("Camera2D") { ClearFlags = ClearFlags.DepthAndStencil }; // Transparent background need this clearFlags.
+            var camera2D = new FixedCamera2D("Camera2D") { BackgroundColor = Color.LightGreen}; // Transparent background need this clearFlags.
             EntityManager.Add(camera2D);
 
             //Add player

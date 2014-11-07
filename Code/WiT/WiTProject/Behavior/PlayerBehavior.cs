@@ -31,9 +31,10 @@ namespace WiTProject
         private RigidBody2D _body;
 
         //constructor
-        public PlayerBehavior()
+        public PlayerBehavior(float moveForce)
             : base()
         {
+            this._moveForce = moveForce;
         }
 
         protected override void Initialize()
@@ -45,6 +46,7 @@ namespace WiTProject
         protected override void Update(TimeSpan gameTime)
         {
             UpdateInput();
+            Movement();
         }
 
         private void UpdateInput()
@@ -68,7 +70,7 @@ namespace WiTProject
                 if (_currKS.A == ButtonState.Pressed)
                     _inputDirection.X -= 1f;
                 if (_currKS.D == ButtonState.Pressed)
-                    _inputDirection.X -= 1f;
+                    _inputDirection.X += 1f;
 
                 //normalize
                 if (_inputDirection != Vector2.Zero)

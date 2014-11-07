@@ -27,6 +27,11 @@ namespace WiTProject
         //vars
         private Scene _scene;
 
+        //basic setup vars
+        private const float normalMass = 10f;
+        private const float normalDamping = 1f;
+        private const float normalMoveForce = 2f;
+
         //constructor
         public Spawner(Scene scene)
         {
@@ -38,11 +43,11 @@ namespace WiTProject
         {
             Entity player = new Entity("Player")
                 .AddComponent(new Transform2D() { Position = new Vector2(posX, posY) })
-                .AddComponent(new RigidBody2D() { IgnoreGravity = true })
+                .AddComponent(new RigidBody2D() { IgnoreGravity = true, Mass = normalMass, Damping = normalDamping})
                 .AddComponent(new Sprite(_spriteDictionary["PlayerSprite"]))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new CircleCollider())
-                .AddComponent(new PlayerBehavior());
+                .AddComponent(new PlayerBehavior(normalMoveForce));
             _scene.EntityManager.Add(player);
         }
     }
