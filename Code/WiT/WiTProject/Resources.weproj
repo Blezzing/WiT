@@ -12,7 +12,7 @@
   <Assets>
     <Asset Path="Fonts\andyb.spr" Hash="6384d81135ce03f936bfdaaf19aa4b5d">
       <ExportProperties>
-        <Export Bold="False" Italic="False" Size="20" Spacing="0" InnerSpacing="0" DefaultCharacter="*" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Windows" Platform="Windows" Generate="True" ZipCompress="True" />
+        <Export Bold="False" Italic="False" Size="20" Spacing="0" InnerSpacing="0" DefaultCharacter="*" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Windows" Platform="Windows" Generate="False" ZipCompress="True" ExportType="WaveEngine.Framework.Graphics.SpriteFont" ExportVersion="1.0.0.0" />
         <Export Bold="False" Italic="False" Size="16" Spacing="0" InnerSpacing="0" DefaultCharacter="*" Profile="WaveEditor.Core.Model.PlatformProfile" Name="WP" Platform="WP" Generate="True" ZipCompress="True" />
         <Export Bold="False" Italic="False" Size="16" Spacing="0" InnerSpacing="0" DefaultCharacter="*" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Metro" Platform="Metro" Generate="True" ZipCompress="True" />
         <Export Bold="False" Italic="False" Size="16" Spacing="0" InnerSpacing="0" DefaultCharacter="*" Profile="WaveEditor.Core.Model.PlatformProfile" Name="iOS" Platform="iOS" Generate="True" ZipCompress="True" />
