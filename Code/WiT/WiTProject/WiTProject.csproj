@@ -52,6 +52,9 @@
     <Compile Include="Interfaces\ICanTakeResidualDamage.cs" />
     <Compile Include="Interfaces\ICanDie.cs" />
     <Compile Include="Core\PlayerStats.cs" />
+    <Compile Include="Core\MapDesign.cs" />
+    <Compile Include="Scenes\Level.cs" />
+    <Compile Include="Core\LevelGenerator.cs" />
     <Compile Include="Scenes\MainMenuOptionsScene.cs" />
     <Compile Include="Scenes\TestScene.cs" />
     <Compile Include="Behavior\Unit\PlayerBehavior.cs" />

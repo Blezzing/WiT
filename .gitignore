@@ -186,3 +186,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+Code/WiT/WiTProject/obj/x86/Debug/WiTProject.pdb
+Code/WiT/WiTProject/obj/x86/Debug/WiTProject.dll
+Code/WiT/WiTProject/obj/x86/Debug/WiTProject.pdb
+Code/WiT/WiTProject/bin/x86/Debug/WiTProject.pdb
