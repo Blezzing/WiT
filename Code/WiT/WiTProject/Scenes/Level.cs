@@ -53,12 +53,12 @@ namespace WiTProject
 
         private void MakeFloorTile(int posX, int posY, TileNumber tileNum)
         {
-
             EntityManager.Add(
                 new Entity()
-                    .AddComponent(new Transform2D() { Origin = Vector2.Center, Position = new Vector2(posX * TileData.TileSize, posY * TileData.TileSize) })
-                    .AddComponent(new Sprite(TileData.GetTile(TileEnviroment.Grass, tileNum)))
-                    .AddComponent(new SpriteRenderer(DefaultLayers.Additive)));
+                    .AddComponent(new Transform2D() {Position = new Vector2((posX * TileData.TileSize * TileData.TileScale), (posY * TileData.TileSize * TileData.TileScale)), Scale = new Vector2(TileData.TileScale)})
+                    .AddComponent(TileData.GetTile(TileEnviroment.Debug, tileNum).Clone())
+                    .AddComponent(new SpriteRenderer(DefaultLayers.Opaque))
+            );
         }
     }
 }

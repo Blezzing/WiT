@@ -27,8 +27,8 @@ namespace WiTProject
         public Boolean[,] BoolFloor;
         public TileNumber[,] TileFloor;
 
-        private int _floorHeight = 128;
-        private int _floorWidth  = 128;
+        private int _floorHeight = 64;
+        private int _floorWidth  = 64;
 
         public MapDesign()
         {

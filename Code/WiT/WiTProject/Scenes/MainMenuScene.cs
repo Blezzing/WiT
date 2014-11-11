@@ -125,7 +125,8 @@ namespace WiTProject
 
         void newGameBut_Click(object sender, EventArgs e)
         {
-            WaveServices.ScreenContextManager.To(new ScreenContext(new TestScene()), transition, true);
+            WaveServices.ScreenContextManager.To(new ScreenContext(LevelGenerator.RandomGeneratedLevel()), transition, true);
+            //WaveServices.ScreenContextManager.To(new ScreenContext(new TestScene()), transition, true);
         }
 
         void loadGameBut_Click(object sender, EventArgs e)
