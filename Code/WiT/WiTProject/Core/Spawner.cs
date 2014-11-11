@@ -55,7 +55,7 @@ namespace WiTProject
 
         public void SpawnCamera2D()
         {
-            var camera2D = new FixedCamera2D("Camera2D") { BackgroundColor = Color.LightGreen};
+            var camera2D = new FixedCamera2D("Camera2D") { BackgroundColor = Color.CornflowerBlue};
             _scene.EntityManager.Add(camera2D);
         }
     }
