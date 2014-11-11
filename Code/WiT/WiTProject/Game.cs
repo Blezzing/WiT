@@ -20,6 +20,8 @@ namespace WiTProject
 
             ScreenContext screenContext = new ScreenContext(new MainMenuScene());
             WaveServices.ScreenContextManager.To(screenContext);
+
+            TileData.Build();
         }
     }
 }

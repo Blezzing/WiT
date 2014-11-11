@@ -20,32 +20,15 @@ namespace WiTProject
 {
 
 
+    
     public class MapDesign
     {
-        public enum TileNumber
-        {
-            TopLeft = 0,
-            TopMiddle,
-            TopRight,
-            MiddleLeft,
-            MiddleMiddle,
-            MiddleRight,
-            BottomLeft,
-            BottomMiddle,
-            BottomRight,
-            InverseTopLeft,
-            InverseTopRight,
-            InverseBottomLeft,
-            InverseBottomRight,
-            InverseMiddleMiddle
-        }
 
         public Boolean[,] BoolFloor;
         public TileNumber[,] TileFloor;
 
         private int _floorHeight = 128;
         private int _floorWidth  = 128;
-        private WaveEngine.Framework.Services.Random _rng = new WaveEngine.Framework.Services.Random();
 
         public MapDesign()
         {
@@ -79,7 +62,7 @@ namespace WiTProject
                 for (int cellRow = 0; cellRow < _floorHeight; cellRow += cellSize)
                 {
                     //find tilfældig bool:
-                    randomBool = _rng.NextBool();
+                    randomBool = WaveServices.Random.NextBool();
 
                     //undtagelsen:
                     if (cellCol == 0 || cellCol == _floorWidth - cellSize || cellRow == 0 || cellRow == _floorHeight - cellSize)
@@ -89,7 +72,6 @@ namespace WiTProject
                     FillCell(BoolFloor, cellCol, cellRow, cellSize, randomBool);
                 }
             }
-
         }
 
         private void FillCell(Boolean[,] cells, int startcellCol, int startcellRow, int size, bool value)
@@ -156,6 +138,7 @@ namespace WiTProject
         private void BuildTileFloor()
         {
             TileFloor = new TileNumber[_floorHeight, _floorWidth];
+            Boolean left, top, right, bottom, d1, d2, d3, d4;
                         
             for (int cellRow = 0; cellRow < _floorHeight; cellRow++)
             {
@@ -176,12 +159,60 @@ namespace WiTProject
                     }
                     else
                     {
-                        if (BoolFloor[cellRow,cellCol])
+                        if (BoolFloor[cellRow, cellCol])
                         {
-                            //COMPLETE THIS!
+                            TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
                         }
                         else
                         {
+                            //Logik:
+                            //  d1  2   d2
+                            //  1   X   3
+                            //  d4  4   d3
+                            //
+                            // true = bad
+                            // false = good
+
+                            left    = BoolFloor[cellRow, cellCol - 1];
+                            top     = BoolFloor[cellRow - 1, cellCol];
+                            right   = BoolFloor[cellRow, cellCol + 1];
+                            bottom  = BoolFloor[cellRow + 1, cellCol];
+                            d1      = BoolFloor[cellRow - 1, cellCol - 1];
+                            d2      = BoolFloor[cellRow - 1, cellCol + 1];
+                            d3      = BoolFloor[cellRow + 1, cellCol + 1];
+                            d4      = BoolFloor[cellRow + 1, cellCol - 1];
+
+                            //De første 9 sprites;
+                            if (left && top && !right && !bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.TopLeft;
+                            else if (!left && top && !right && !bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.TopMiddle;
+                            else if (!left && top && right && !bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.TopRight;
+                            else if (left && !top && !right && !bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.MiddleLeft;
+                            else if (!left && !top && !right && !bottom)
+                            {
+                                if (d1)
+                                    TileFloor[cellRow, cellCol] = TileNumber.InverseTopLeft;
+                                else if (d2)
+                                    TileFloor[cellRow, cellCol] = TileNumber.InverseTopRight;
+                                else if (d3)
+                                    TileFloor[cellRow, cellCol] = TileNumber.InverseBottomRight;
+                                else if (d4)
+                                    TileFloor[cellRow, cellCol] = TileNumber.InverseBottomLeft;
+                                else
+                                    TileFloor[cellRow, cellCol] = TileNumber.MiddleMiddle;
+                            }
+                            else if (!left && !top && right && !bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.MiddleRight;
+                            else if (left && !top && !right && bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.BottomLeft;
+                            else if (!left && !top && !right && bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.BottomMiddle;
+                            else if (!left && !top && right && bottom)
+                                TileFloor[cellRow, cellCol] = TileNumber.BottomRight;
+
 
                         }
                     }
@@ -190,5 +221,15 @@ namespace WiTProject
             }
         }
         #endregion
+
+        public int FloorHeight
+        {
+            get { return _floorHeight; }
+        }
+
+        public int FloorWidth
+        {
+            get { return _floorWidth; }
+        }
     }
 }

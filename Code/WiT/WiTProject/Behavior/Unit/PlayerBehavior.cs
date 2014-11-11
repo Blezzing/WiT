@@ -101,8 +101,6 @@ namespace WiTProject
 
         public void CheckForDeath()
         {
-            if (false)
-                Die();
         }
 
         public void Die()

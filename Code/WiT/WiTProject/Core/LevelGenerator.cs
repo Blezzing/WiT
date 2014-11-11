@@ -8,14 +8,10 @@ namespace WiTProject
 {
     public static class LevelGenerator
     {
-        private static List<MapDesign> _mapDesigns;
-        private static List<int[]> _enemySpread;
 
-        public static Level RandomLevelFromNumber(int levelNumber)
+        public static Level RandomGeneratedLevel()
         {
-
-            Level ret;
-            return null;
+            return new Level(new MapDesign());
         }
 
         public static Level SpecificLevel(int levelNumber)
