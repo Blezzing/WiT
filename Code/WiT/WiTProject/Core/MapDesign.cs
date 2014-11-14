@@ -23,18 +23,22 @@ namespace WiTProject
     
     public class MapDesign
     {
-
+        #region Values
         public Boolean[,] BoolFloor;
         public TileNumber[,] TileFloor;
 
+        public Texture2D FloorTexture;
+
         private int _floorHeight = 64;
         private int _floorWidth  = 64;
+        #endregion
 
         public MapDesign()
         {
             //Initialize
             RandomizeBoolFloor();
             BuildTileFloor();
+            //CombineTiles();
         }
 
         #region Beskæftigelse med boolsk tabel
@@ -149,13 +153,13 @@ namespace WiTProject
                     //False = good
                     
                     //Yderkanter:
-                    if (cellRow == 0 || cellRow == _floorHeight-1)
+                    if (cellRow == 0 || cellRow == _floorHeight-1 || cellCol == 0 || cellCol == _floorWidth-1)
                     {
-                        TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
-                    }
-                    else if (cellCol == 0 || cellCol == _floorWidth-1)
-                    {
-                        TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
+                        if (BoolFloor[cellRow, cellCol])
+                            TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
+                        else
+                            TileFloor[cellRow, cellCol] = TileNumber.MiddleMiddle;
+                        
                     }
                     else
                     {
@@ -222,6 +226,44 @@ namespace WiTProject
         }
         #endregion
 
+        private void CombineTiles()
+        {
+            FloorTexture = new Texture2D() 
+            { 
+                Height = FloorHeight * TileData.TileSize, 
+                Width = FloorWidth * TileData.TileSize,
+                Levels = 1,
+                Format = PixelFormat.R8G8B8A8
+            };
+
+            int totalBytes = FloorTexture.Width * FloorTexture.Height * 4;
+            FloorTexture.Data = new byte[1][][];
+            FloorTexture.Data[0] = new byte[1][];
+            FloorTexture.Data[0][0] = new byte[totalBytes];
+
+            int bytesPerTile = TileData.TileSize * TileData.TileSize * 4;
+            int byteToFill;
+            Color[] tileColorData;
+            for (int tfRow = 0; tfRow < FloorHeight; tfRow++)
+            {
+                for (int tfCol = 0; tfCol < FloorWidth; tfCol++)
+                {
+                    tileColorData = TileData.GetTile(TileEnviroment.Debug, TileFloor[tfRow, tfCol]).GetData();
+
+                    /*for (int byteToCopy = 0; byteToCopy < bytesPerTile; byteToCopy+= 4)
+                    {
+                        // offset + place in line + line //TileData.GetTile(TileEnviroment.Debug, TileFloor[tfRow, tfCol]).Data[0][0][byteToCopy];
+                        byteToFill = (tfRow * tfCol * TileData.TileSize * 4) + (byteToCopy % TileData.TileSize * 4) + (((byteToCopy * 4) / (TileData.TileSize *4)) * (FloorWidth * TileData.TileSize * 4));
+                        FloorTexture.Data[0][0][byteToFill]  =  data[byteToCopy / 4].R;
+                        FloorTexture.Data[0][0][byteToFill+1] = data[byteToCopy / 4].G;
+                        FloorTexture.Data[0][0][byteToFill+2] = data[byteToCopy / 4].B;
+                        FloorTexture.Data[0][0][byteToFill+3] = data[byteToCopy / 4].A;
+                    }*/
+                }
+            }
+        }
+
+        #region Properties
         public int FloorHeight
         {
             get { return _floorHeight; }
@@ -231,5 +273,6 @@ namespace WiTProject
         {
             get { return _floorWidth; }
         }
+        #endregion
     }
 }
