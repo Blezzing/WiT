@@ -35,17 +35,11 @@ namespace WiTProject
             _judge = new FightJudge(this);
             _spawner = new Spawner(this, _judge);
 
-            PaintFloor();/*
-            EntityManager.Add(
-                new Entity()
-                    .AddComponent(new Transform2D() { Scale = new Vector2(0.01f) })
-                    .AddComponent(new Sprite(_mapDesign.FloorTexture))
-                    .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
-            );*/
-
+            PaintFloor();
 
             //Entitymanager
-            _spawner.SpawnCamera2D();
+            //_spawner.SpawnCamera2D();
+            EntityManager.Add(new FreeCamera2D("test") { BackgroundColor = Color.White });
             _spawner.SpawnPlayer(300,300);
         }
 

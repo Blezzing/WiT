@@ -29,8 +29,8 @@ namespace WiTProject
 
         //public Texture2D FloorTexture;
 
-        private int _floorHeight = 64;
-        private int _floorWidth  = 64;
+        private int _floorHeight = 128;
+        private int _floorWidth  = 128;
         #endregion
 
         #region Construktor
@@ -51,11 +51,11 @@ namespace WiTProject
             //subject to change
             InitializeCells(cellSize);
             cellSize /= 2;
-            ApplyAutomaton(cellSize, new int[] { 5, 6, 7, 8 }, new int[] { 3, 4, 5, 6, 7, 8 }, 5);
+            ApplyAutomaton(cellSize, new int[] { 5, 6, 7, 8 }, new int[] { 3, 4, 5, 6, 7, 8 }, 3);
             cellSize /= 2;
-            ApplyAutomaton(cellSize, new int[] { 5, 6, 7, 8 }, new int[] { 3, 4, 5, 6, 7, 8 }, 5);
+            ApplyAutomaton(cellSize, new int[] { 5, 6, 7, 8 }, new int[] { 3, 4, 5, 6, 7, 8 }, 4);
             cellSize = 2;
-            ApplyAutomaton(cellSize, new int[] { 5, 6, 7, 8 }, new int[] { 3, 4, 5, 6, 7, 8 }, 5);
+            ApplyAutomaton(cellSize, new int[] { 5, 6, 7, 8 }, new int[] { 3, 4, 5, 6, 7, 8 }, 4);
         }
 
         private void InitializeCells(int cellSize)
@@ -67,39 +67,41 @@ namespace WiTProject
             {
                 for (int cellRow = 0; cellRow < _floorHeight; cellRow += cellSize)
                 {
-
-                    //undtagelsen:
-                    if (cellCol == 0 || cellCol == _floorWidth - cellSize || cellRow == 0 || cellRow == _floorHeight - cellSize)
-                        randomBool = true;
+                    if ((cellCol == 0 || cellCol == _floorWidth - cellSize) || (cellRow == 0 || cellRow == _floorHeight - cellSize))
+                    {
+                        FillCell(BoolFloor, cellCol, cellRow, cellSize, true);
+                    }
                     else
-                        //find tilfældig bool:
+                    {
                         randomBool = WaveServices.Random.NextBool();
-
-                    //vidderekald:
-                    FillCell(BoolFloor, cellCol, cellRow, cellSize, randomBool);
+                        FillCell(BoolFloor, cellCol, cellRow, cellSize, randomBool);
+                    }
                 }
             }
         }
 
-        private void FillCell(Boolean[,] cells, int startcellCol, int startcellRow, int size, bool value)
+        private void FillCell(Boolean[,] cells, int startcellCol, int startcellRow, int cellSize, bool value)
         {
-            for (int cellCol = startcellCol; cellCol < startcellCol + size; cellCol++)
+            for (int cellCol = startcellCol; cellCol < startcellCol + cellSize; cellCol++)
             {
-                for (int cellRow = startcellRow; cellRow < startcellRow + size; cellRow++)
+                for (int cellRow = startcellRow; cellRow < startcellRow + cellSize; cellRow++)
                 {
-                    cells[cellRow, cellCol] = value;
+                    if ((cellCol == 0 || cellCol == _floorWidth) || (cellRow == 0 || cellRow == _floorHeight))
+                        cells[cellRow, cellCol] = true;
+                    else
+                        cells[cellRow, cellCol] = value;
                 }
             }
         }
 
         private void ApplyAutomaton(int cellSize, int[] bornList, int[] surviveList, int numIterations)
         {
-            //lav temp arracellRow
+            //lav temp array
             Boolean[,] tempCells = new Boolean[_floorWidth, _floorHeight];
             Boolean newValue;
             int neighboors;
 
-            //fcellRowld temp arracellRow med ncellRow data
+            //fyld temp array med ny data
             for ( ; numIterations > 0; numIterations--)
             {
                 for (int cellCol = 0; cellCol < _floorWidth; cellCol += cellSize)
@@ -130,9 +132,9 @@ namespace WiTProject
                                 (BoolFloor[cellRow, cellCol] == false && bornList.Contains(neighboors)) ||
                                 //should it survive?
                                 (BoolFloor[cellRow, cellCol] == true && surviveList.Contains(neighboors));
-
-                            FillCell(tempCells, cellCol, cellRow, cellSize, newValue);
                         }
+
+                        FillCell(tempCells, cellCol, cellRow, cellSize, newValue);
                     }
                 }
 
@@ -154,76 +156,61 @@ namespace WiTProject
                     //Tile Logik
                     //True = bad
                     //False = good
-                    
-                    //Yderkanter:
-                    if (cellRow == 0 || cellRow == _floorHeight-1 || cellCol == 0 || cellCol == _floorWidth-1)
+
+                    if (BoolFloor[cellRow, cellCol])
                     {
-                        if (BoolFloor[cellRow, cellCol])
-                            TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
-                        else
-                            TileFloor[cellRow, cellCol] = TileNumber.MiddleMiddle;
-                        
+                        TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
                     }
                     else
                     {
-                        if (BoolFloor[cellRow, cellCol])
+                        //Logik:
+                        //  d1  2   d2
+                        //  1   X   3
+                        //  d4  4   d3
+                        //
+                        // true = bad
+                        // false = good
+
+                        left = BoolFloor[cellRow, cellCol - 1];
+                        top = BoolFloor[cellRow - 1, cellCol];
+                        right = BoolFloor[cellRow, cellCol + 1];
+                        bottom = BoolFloor[cellRow + 1, cellCol];
+                        d1 = BoolFloor[cellRow - 1, cellCol - 1];
+                        d2 = BoolFloor[cellRow - 1, cellCol + 1];
+                        d3 = BoolFloor[cellRow + 1, cellCol + 1];
+                        d4 = BoolFloor[cellRow + 1, cellCol - 1];
+
+                        //De første 9 sprites;
+                        if (left && top && !right && !bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.TopLeft;
+                        else if (!left && top && !right && !bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.TopMiddle;
+                        else if (!left && top && right && !bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.TopRight;
+                        else if (left && !top && !right && !bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.MiddleLeft;
+                        else if (!left && !top && !right && !bottom)
                         {
-                            TileFloor[cellRow, cellCol] = TileNumber.InverseMiddleMiddle;
+                            if (d1)
+                                TileFloor[cellRow, cellCol] = TileNumber.InverseTopLeft;
+                            else if (d2)
+                                TileFloor[cellRow, cellCol] = TileNumber.InverseTopRight;
+                            else if (d3)
+                                TileFloor[cellRow, cellCol] = TileNumber.InverseBottomRight;
+                            else if (d4)
+                                TileFloor[cellRow, cellCol] = TileNumber.InverseBottomLeft;
+                            else
+                                TileFloor[cellRow, cellCol] = TileNumber.MiddleMiddle;
                         }
-                        else
-                        {
-                            //Logik:
-                            //  d1  2   d2
-                            //  1   X   3
-                            //  d4  4   d3
-                            //
-                            // true = bad
-                            // false = good
-
-                            left    = BoolFloor[cellRow, cellCol - 1];
-                            top     = BoolFloor[cellRow - 1, cellCol];
-                            right   = BoolFloor[cellRow, cellCol + 1];
-                            bottom  = BoolFloor[cellRow + 1, cellCol];
-                            d1      = BoolFloor[cellRow - 1, cellCol - 1];
-                            d2      = BoolFloor[cellRow - 1, cellCol + 1];
-                            d3      = BoolFloor[cellRow + 1, cellCol + 1];
-                            d4      = BoolFloor[cellRow + 1, cellCol - 1];
-
-                            //De første 9 sprites;
-                            if (left && top && !right && !bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.TopLeft;
-                            else if (!left && top && !right && !bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.TopMiddle;
-                            else if (!left && top && right && !bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.TopRight;
-                            else if (left && !top && !right && !bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.MiddleLeft;
-                            else if (!left && !top && !right && !bottom)
-                            {
-                                if (d1)
-                                    TileFloor[cellRow, cellCol] = TileNumber.InverseTopLeft;
-                                else if (d2)
-                                    TileFloor[cellRow, cellCol] = TileNumber.InverseTopRight;
-                                else if (d3)
-                                    TileFloor[cellRow, cellCol] = TileNumber.InverseBottomRight;
-                                else if (d4)
-                                    TileFloor[cellRow, cellCol] = TileNumber.InverseBottomLeft;
-                                else
-                                    TileFloor[cellRow, cellCol] = TileNumber.MiddleMiddle;
-                            }
-                            else if (!left && !top && right && !bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.MiddleRight;
-                            else if (left && !top && !right && bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.BottomLeft;
-                            else if (!left && !top && !right && bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.BottomMiddle;
-                            else if (!left && !top && right && bottom)
-                                TileFloor[cellRow, cellCol] = TileNumber.BottomRight;
-
-
-                        }
+                        else if (!left && !top && right && !bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.MiddleRight;
+                        else if (left && !top && !right && bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.BottomLeft;
+                        else if (!left && !top && !right && bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.BottomMiddle;
+                        else if (!left && !top && right && bottom)
+                            TileFloor[cellRow, cellCol] = TileNumber.BottomRight;
                     }
-
                 }
             }
         }
