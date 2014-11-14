@@ -46,7 +46,7 @@ namespace WiTProject
         private static Dictionary<TileEnviroment, Dictionary<TileNumber, Texture2D>> _data = new Dictionary<TileEnviroment, Dictionary<TileNumber, Texture2D>>();
 
         public static readonly int TileSize = 200;
-        public static readonly float TileScale = 1f;
+        public static readonly float TileScale = 0.2f;
 
 
         public static void Build()

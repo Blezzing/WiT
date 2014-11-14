@@ -27,12 +27,13 @@ namespace WiTProject
         public Boolean[,] BoolFloor;
         public TileNumber[,] TileFloor;
 
-        public Texture2D FloorTexture;
+        //public Texture2D FloorTexture;
 
         private int _floorHeight = 64;
         private int _floorWidth  = 64;
         #endregion
 
+        #region Construktor
         public MapDesign()
         {
             //Initialize
@@ -40,6 +41,7 @@ namespace WiTProject
             BuildTileFloor();
             //CombineTiles();
         }
+        #endregion
 
         #region Beskæftigelse med boolsk tabel
         private void RandomizeBoolFloor()
@@ -65,12 +67,13 @@ namespace WiTProject
             {
                 for (int cellRow = 0; cellRow < _floorHeight; cellRow += cellSize)
                 {
-                    //find tilfældig bool:
-                    randomBool = WaveServices.Random.NextBool();
 
                     //undtagelsen:
                     if (cellCol == 0 || cellCol == _floorWidth - cellSize || cellRow == 0 || cellRow == _floorHeight - cellSize)
                         randomBool = true;
+                    else
+                        //find tilfældig bool:
+                        randomBool = WaveServices.Random.NextBool();
 
                     //vidderekald:
                     FillCell(BoolFloor, cellCol, cellRow, cellSize, randomBool);
@@ -226,21 +229,93 @@ namespace WiTProject
         }
         #endregion
 
+        #region Overflødig kombination af tiles
+        /*
         private void CombineTiles()
         {
+            //Prepare texture;
             FloorTexture = new Texture2D() 
             { 
                 Height = FloorHeight * TileData.TileSize, 
                 Width = FloorWidth * TileData.TileSize,
                 Levels = 1,
-                Format = PixelFormat.R8G8B8A8
+                Format = PixelFormat.R8G8B8A8 
             };
 
+            //Prepare target
             int totalBytes = FloorTexture.Width * FloorTexture.Height * 4;
             FloorTexture.Data = new byte[1][][];
             FloorTexture.Data[0] = new byte[1][];
             FloorTexture.Data[0][0] = new byte[totalBytes];
+            
+            //Prepare sources
+            int sourceIndex;
+            int targetIndex;
+            Color[] source;
+            Byte[] target = FloorTexture.Data[0][0];
 
+            //Perform logic itterér tiles, så pixels.
+            for (int vT = 0; vT < FloorHeight; vT++)
+            {
+                for (int hT = 0; hT < FloorWidth; hT++)
+                {
+                    source = TileData.GetTile(TileEnviroment.Debug, TileFloor[vT, hT]).GetData();
+                    
+                    for (int vP = 0; vP < TileData.TileSize; vP++)
+                    {
+                        for (int hP = 0; hP < TileData.TileSize; hP++)
+                        {
+                            sourceIndex = vP * TileData.TileSize + hP;
+                            targetIndex = (vT * FloorWidth * TileData.TileSize + vP * TileData.TileSize + hT * TileData.TileSize + hP) * 4;
+
+
+                            target[targetIndex + 0] = source[sourceIndex].R;
+                            target[targetIndex + 1] = source[sourceIndex].G;
+                            target[targetIndex + 2] = source[sourceIndex].B;
+                            target[targetIndex + 3] = source[sourceIndex].A;
+                        }
+                    }
+                }
+            }
+
+            //??
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            /*
             int bytesPerTile = TileData.TileSize * TileData.TileSize * 4;
             int byteToFill;
             Color[] tileColorData;
@@ -250,7 +325,7 @@ namespace WiTProject
                 {
                     tileColorData = TileData.GetTile(TileEnviroment.Debug, TileFloor[tfRow, tfCol]).GetData();
 
-                    /*for (int byteToCopy = 0; byteToCopy < bytesPerTile; byteToCopy+= 4)
+                    for (int byteToCopy = 0; byteToCopy < bytesPerTile; byteToCopy+= 4)
                     {
                         // offset + place in line + line //TileData.GetTile(TileEnviroment.Debug, TileFloor[tfRow, tfCol]).Data[0][0][byteToCopy];
                         byteToFill = (tfRow * tfCol * TileData.TileSize * 4) + (byteToCopy % TileData.TileSize * 4) + (((byteToCopy * 4) / (TileData.TileSize *4)) * (FloorWidth * TileData.TileSize * 4));
@@ -258,10 +333,12 @@ namespace WiTProject
                         FloorTexture.Data[0][0][byteToFill+1] = data[byteToCopy / 4].G;
                         FloorTexture.Data[0][0][byteToFill+2] = data[byteToCopy / 4].B;
                         FloorTexture.Data[0][0][byteToFill+3] = data[byteToCopy / 4].A;
-                    }*/
+                    }
                 }
             }
         }
+        */
+        #endregion
 
         #region Properties
         public int FloorHeight

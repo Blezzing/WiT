@@ -35,12 +35,13 @@ namespace WiTProject
             _judge = new FightJudge(this);
             _spawner = new Spawner(this, _judge);
 
+            PaintFloor();/*
             EntityManager.Add(
                 new Entity()
-                    .AddComponent(new Transform2D())
+                    .AddComponent(new Transform2D() { Scale = new Vector2(0.01f) })
                     .AddComponent(new Sprite(_mapDesign.FloorTexture))
                     .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
-            );
+            );*/
 
 
             //Entitymanager
@@ -48,7 +49,7 @@ namespace WiTProject
             _spawner.SpawnPlayer(300,300);
         }
 
-        /*
+        
         private void PaintFloor()
         {
             for (int y = 0; y < _mapDesign.FloorHeight; y++)
@@ -65,9 +66,10 @@ namespace WiTProject
             EntityManager.Add(
                 new Entity()
                     .AddComponent(new Transform2D() {Position = new Vector2((posX * TileData.TileSize * TileData.TileScale), (posY * TileData.TileSize * TileData.TileScale)), Scale = new Vector2(TileData.TileScale)})
-                    .AddComponent(TileData.GetTile(TileEnviroment.Debug, tileNum).Clone())
-                    .AddComponent(new SpriteRenderer(DefaultLayers.Opaque))
+                    .AddComponent(new Sprite(TileData.GetTile(TileEnviroment.Debug, tileNum)))
+                    .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                    .AddComponent(new RectangleCollider())
             );
-        }*/
+        }
     }
 }
