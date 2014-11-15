@@ -35,10 +35,10 @@ namespace WiTProject
             _judge = new FightJudge(this);
             _spawner = new Spawner(this, _judge);
 
+            //Funktionskald
             PaintFloor();
 
             //Entitymanager
-            //_spawner.SpawnCamera2D();
             EntityManager.Add(new FreeCamera2D("test") { BackgroundColor = Color.White });
             _spawner.SpawnPlayer(300,300);
         }
@@ -59,9 +59,9 @@ namespace WiTProject
         {
             EntityManager.Add(
                 new Entity()
-                    .AddComponent(new Transform2D() {Position = new Vector2((posX * TileData.TileSize * TileData.TileScale), (posY * TileData.TileSize * TileData.TileScale)), Scale = new Vector2(TileData.TileScale)})
+                    .AddComponent(new Transform2D() { Position = new Vector2((posX * TileData.TileSize * TileData.TileScale), (posY * TileData.TileSize * TileData.TileScale)), Scale = new Vector2(TileData.TileScale) })
                     .AddComponent(new Sprite(TileData.GetTile(TileEnviroment.Debug, tileNum)))
-                    .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                    .AddComponent(new SpriteRenderer(DefaultLayers.Alpha) { CullingEnabled = true })
                     .AddComponent(new RectangleCollider())
             );
         }
