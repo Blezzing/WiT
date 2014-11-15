@@ -75,7 +75,7 @@ namespace WiTProject
             _scene.EntityManager.Add(
                 new Entity()
                     .AddComponent(new Transform2D() { Position = new Vector2((posX * TileData.TileSize * TileData.TileScale), (posY * TileData.TileSize * TileData.TileScale)), Scale = new Vector2(TileData.TileScale) })
-                    .AddComponent(new Sprite(TileData.GetTile(TileEnviroment.Debug, tileNum)))
+                    .AddComponent(new Sprite(TileData.GetTile(TileEnviroment.Grass, tileNum)))
                     .AddComponent(new SpriteRenderer(DefaultLayers.Alpha) { CullingEnabled = true })
                     .AddComponent(new RectangleCollider())
             );
