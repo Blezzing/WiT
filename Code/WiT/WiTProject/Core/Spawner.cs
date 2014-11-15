@@ -52,11 +52,27 @@ namespace WiTProject
                 .AddComponent(new PlayerBehavior(normalMoveForce));
             _scene.EntityManager.Add(player);
         }
+        public void SpawnIdleEntity(string name, float x, float y)
+        {
+            Entity idleDood = new Entity(name)
+                .AddComponent(new Transform2D() { Position = new Vector2(x, y) })
+                .AddComponent(new Sprite(_spriteDictionary["PlayerSprite"]))
+                .AddComponent(new SpriteRenderer(DefaultLayers.Additive));
+
+            _scene.EntityManager.Add(idleDood);
+        }
 
         public void SpawnCamera2D()
         {
             var camera2D = new FixedCamera2D("Camera2D") { BackgroundColor = Color.LightGreen};
             _scene.EntityManager.Add(camera2D);
+        }
+        public void SpawnFocusCamera2D()
+        {
+            var camera2D = new Camera2D()
+            {
+
+            };
         }
     }
 }

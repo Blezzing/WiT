@@ -27,7 +27,10 @@ namespace WiTProject
 
             //Spawn stuff
             _spawner.SpawnCamera2D();
+            //_spawner.SpawnFocusCamera2D();
             _spawner.SpawnPlayer(50, 50);
+
+            _spawner.SpawnIdleEntity("IdleDood", 200, 200);
         }
 
         protected override void Start()
